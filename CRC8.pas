@@ -22,9 +22,9 @@
     These can be used to initialize the custom hash object with respective
     settings.
 
-  Version 1.0 (2026-06-20)
+  Version 1.0.1 (2026-06-21)
 
-  Last change 2026-06-20
+  Last change 2026-06-21
 
   ©2026 František Milt
 
@@ -1253,7 +1253,10 @@ end;
 procedure TCRC8CustomHash.Init;
 begin
 inherited;
-fCRC8Value := fInitialValue;
+If fReflectIn then
+  fCRC8Value := ReflectBits(fInitialValue)
+else
+  fCRC8Value := fInitialValue;
 end;
 
 //------------------------------------------------------------------------------
